@@ -1,0 +1,14 @@
+[Unit]
+Description=Bidirectional Gamescope text clipboard synchronization
+# Klipper/D-Bus ist beim Login evtl. noch nicht bereit -> unbegrenzt neu starten.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/gamescope-clipboard-sync
+Restart=on-failure
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
